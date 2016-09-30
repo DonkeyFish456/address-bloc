@@ -1,0 +1,40 @@
+require_relative '../models/entry'
+
+RSpec.describe Entry do
+  describe "attributes" do
+    let(:entry) {Entry.new('Ada Lovelance', '010.012.1815', 'test@test.com')}
+
+    it "responds to name" do
+      expect(entry).to respond_to(:name)
+    end
+
+    it "reports its name" do
+      expect(entry.name).to eq('Ada Lovelance')
+    end
+
+    it "responds to phone number" do
+      expect(entry).to respond_to(:phone_number)
+    end
+
+    it "reports it phone_number" do
+      expect(entry.phone_number).to eq('010.012.1815')
+    end
+
+    it "responds to email" do
+      expect(entry).to respond_to(:email)
+    end
+
+    it "resports its email" do
+      expect(entry.email).to eq('test@test.com')
+    end
+
+    describe "#to_s" do
+      it "prints an entry as a string" do
+        entry = Entry.new('Ada Lovelance', '010.012.1815', 'test@test.com')
+        expected_string = "Name: Ada Lovelance\nPhone Number: 010.012.1815\nEmail: test@test.com"
+        expect(entry.to_s).to eq(expected_string)
+      end
+    end
+
+  end
+end
